@@ -1,0 +1,89 @@
+<!-- feature part here -->
+<section class="feature_part section_padding">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <div class="feature_part_tittle">
+                    <h3>Different pieces were worn to symbolise different messages.</h3>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="feature_part_content">
+                    <p>Trends come and go, and style evolves. It’s important to have pieces of jewelry that are timeless and look chic despite ever-changing fashions. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_feature_part">
+                    <img src="img/icon/feature_icon_1.svg" alt="#">
+                    <h4>Cash On Delivery</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_feature_part">
+                    <img src="img/icon/feature_icon_2.svg" alt="#">
+                    <h4>Online Order</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_feature_part">
+                    <img src="img/icon/feature_icon_3.svg" alt="#">
+                    <h4>Free Delivery</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single_feature_part">
+                    <img src="img/icon/feature_icon_4.svg" alt="#">
+                    <h4>Product with Gift</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- feature part end -->
+
+<!-- subscribe part here -->
+<section class="subscribe_part section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="subscribe_part_content">
+                    <h2>Get promotions & updates!</h2>
+                    <p>The bandits broke into the jewelry and stole near all the valuable necklaces.</p>
+                    <form action="/subscription" method="post">
+                        <div class="subscribe_form">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="email" name="email" placeholder="Enter your mail">
+                            <button style="background-color: white; color: rgba(14, 12, 12, 0.8);" class="btn_1" data-toggle="modal" data-target="#centralModalLg">Subscribe</button>
+                            <div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document" style="margin-top: 10%;">
+                                    <!--Content-->
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title w-100" id="myModalLabel">Subscription</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                        </div>
+                                        <!--Body-->
+                                        <div style="text-align: center;" class="modal-body">
+                                            Thanks for your subscription with Zodiak Silver, we recived your email. <br> Wait for your email for new Collections.
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer">
+                                            <button style="margin-right: 41%;" type="button" class="btn_3" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subscribe part end -->

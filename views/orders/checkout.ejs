@@ -1,0 +1,122 @@
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/navigation.ejs') %>
+            <!-- breadcrumb part start-->
+            <section class="breadcrumb_part">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb_iner">
+                                <h2>checkout</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb part end-->
+
+            <!--================Checkout Area =================-->
+            <section class="checkout_area section_padding">
+                <div class="container">
+                    <div class="billing_details">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <h3>Billing Details</h3>
+
+
+                                <form class="row contact_form" action="/create-order" method="POST">
+                                    <div class="col-md-6 form-group p_star">
+                                        <input type="text" class="form-control" id="first" name="fname" placeholder="Enter your first name *" />
+
+                                    </div>
+                                    <div class="col-md-6 form-group p_star">
+                                        <input type="text" class="form-control" id="last" name="lname" placeholder="Enter your Last name *" />
+
+                                    </div>
+                                    <div class="col-md-6 form-group p_star">
+                                        <input type="text" class="form-control" id="number" name="number" placeholder="Enter your phone number *" />
+
+                                    </div>
+                                    <div class="col-md-6 form-group p_star">
+                                        <input type="text" class="form-control" id="email" name="email" value="<%= user.email%>" />
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="add1" name="address" placeholder="Enter your Home Address *" />
+
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="city" name="town" placeholder="Enter your City in english please * " />
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="city" name="zipcode" placeholder="Enter your postalcode * " />
+                                    </div>
+
+                                    <div class="col-md-12 form-group">
+                                        <div class="creat_account">
+                                            <h3>Additional Information</h3>
+                                        </div>
+                                        <textarea class="form-control" name="otherInfo" id="message" rows="1" placeholder="Additional Information                                        "></textarea>
+                                    </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="order_box">
+                                    <h2>Your Order</h2>
+                                    <ul class="list">
+                                        <li>
+                                            <a style="color: rgba(14, 12, 12, 0.8);" href="#">Product
+                                            <span>Total</span>
+                                            </a>
+                                        </li>
+                                        <% for(p of products) {%>
+                                            <li>
+                                                <a style="color: rgba(14, 12, 12, 0.8);" href="#">
+                                                    <%=p.productId.title%>
+                                                        <span style="color: rgba(14, 12, 12, 0.8);" class="middle">x <%=p.quantity%></span>
+                                                        <span style="color: rgba(14, 12, 12, 0.8);" class="last">LE. <%=(p.quantity * p.productId.price)%></span>
+                                                </a>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                    <ul class="list list_2">
+                                        <li>
+                                            <a href="#">Subtotal
+                                            <span style="color: rgba(14, 12, 12, 0.8);" >LE.<%=totalPrice%></span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Shipping
+                                                <span style="color: rgba(14, 12, 12, 0.8); font-size: 12px;" >40 LE. to cairo, and giza, others 60 LE.</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Total
+                                                <span style="color: rgba(14, 12, 12, 0.8);" >LE.<%= totalPrice %> without shipping</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="payment_item">
+                                        <div class="radion_btn">
+                                            <input type="radio" id="f-option5" name="selector" checked disabled />
+                                            <label for="f-option5">Cash on delivery</label>
+                                            <div class="check"></div>
+                                        </div>
+                                    </div>
+                                    <div class="creat_account">
+                                        <input type="checkbox" id="f-option4" name="selector" required />
+                                        <label for="f-option4">I’ve read and accept the </label>
+                                        <a style="color: #fdb957;" href="/terms&conditions">terms & conditions*</a>
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button style="width: 100%;" class="btn_3">Order Now</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================End Checkout Area =================-->
+
+            <%- include('../includes/end.ejs') %>

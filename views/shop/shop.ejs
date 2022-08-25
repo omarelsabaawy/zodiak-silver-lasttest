@@ -1,0 +1,90 @@
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/navigation.ejs') %>
+
+            <section class="breadcrumb_part">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb_iner">
+                                <h2>
+                                    <%if(products.length > 0){%>
+                                        <%= header %>
+                                            <%}else{%>
+                                                <span style="color: rgba(14, 12, 12, 0.8);">Oops Nothing was Found!</span>
+                                                <%}%>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb part end-->
+
+            <!-- product list part start-->
+            <section class="product_list section_padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="product_sidebar">
+                                <div class="single_sedebar">
+                                    <div class="select_option" style="color: rgba(14, 12, 12, 0.8);">
+                                        <div class="select_option_list" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">Category<i class="right fas fa-caret-down"></i> </div>
+                                        <div class="select_option_dropdown" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">
+                                            <p><a href="/shop/Filter-by-Category=Necklaces">Necklaces</a></p>
+                                            <p><a href="/shop/Filter-by-Category=Bracelet">Bracelet</a></p>
+                                            <p><a href="/shop/Filter-by-Category=Rings">Rings</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single_sedebar">
+                                    <div class="select_option" style="color: rgba(14, 12, 12, 0.8);">
+                                        <div class="select_option_list" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">Gender<i class="right fas fa-caret-down"></i> </div>
+                                        <div class="select_option_dropdown" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">
+                                            <p><a href="/shop/Sort-by-gender=Men">Men</a></p>
+                                            <p><a href="/shop/Sort-by-gender=Women">Women</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single_sedebar">
+                                    <div class="select_option" style="color: rgba(14, 12, 12, 0.8); ">
+                                        <div class="select_option_list" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">Sort <i class="right fas fa-caret-down"></i> </div>
+                                        <div class="select_option_dropdown" style="color: rgba(14, 12, 12, 0.8); background-color: #fdb857be;">
+                                            <p><a href="/shop/Sort-by-price=ASCE">Sort Price ASCE</a></p>
+                                            <p><a href="/shop/Sort-by-price=DESC">Sort Price DESC</a></p>
+                                            <p><a href="/shop/Sort-by-Title=A-Z">Sort title A-Z</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="product_list">
+                                <div class="row">
+                                    <%for(let i = 0 ; i < products.length ; i++){%>
+                                        <%if(products[i].quantity > 0){%>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="single_product_item">
+                                                    <a href="/products/<%= products[i]._id %>"> <img style="height: 400px;" src="<%=products[i].imageUrl%>" alt="#" class="img-fluid">
+                                                <h3>
+                                                    <a href="/products/<%= products[i]._id %>"> <%=products[i].title%> </a>
+                                                    </h3>
+                                                    </a>
+                                                    <p>From
+                                                        <%=products[i].price%>LE.</p>
+                                                </div>
+                                            </div>
+                                            <%}%>
+                                                <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- product list part end-->
+            <%- include('../includes/feature-sub.ejs') %>
+
+                <%- include('../includes/end.ejs') %>

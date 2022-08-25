@@ -1,0 +1,140 @@
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/navigation.ejs') %>
+
+            <!-- breadcrumb part start-->
+            <section class="breadcrumb_part">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb_iner">
+                                <h2>
+                                    <%= header%>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb part end-->
+
+            <!--================ confirmation part start =================-->
+            <section class="confirmation_part section_padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="confirmation_tittle">
+                                <span style="color: rgba(14, 12, 12, 0.8); font-size: 24px;"><%= message %></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-lx-4">
+                            <div class="single_confirmation_details">
+                                <h4>order info</h4>
+                                <ul>
+                                    <li>
+                                        <p>order number</p><span>: <%= orderResult._id %></span>
+                                    </li>
+                                    <li>
+                                        <% var today = new Date(); %>
+                                            <% var dd = String(today.getDate()).padStart(2, '0'); %>
+                                                <% var mm = String(today.getMonth() + 1).padStart(2, '0'); %>
+                                                    <% var yyyy = today.getFullYear(); %>
+                                                        <% today = mm + '/' + dd + '/' + yyyy;%>
+                                                            <p>Order placed on</p><span>: <%= today %></span>
+                                    </li>
+                                    <li>
+                                        <p>total</p><span>: LE. <%= totalPrice%></span>
+                                    </li>
+                                    <li>
+                                        <p>mayment methord</p><span>: Cash</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-lx-4">
+                            <div class="single_confirmation_details">
+                                <h4>Client Informations</h4>
+                                <ul>
+                                    <li>
+                                        <p>Name</p><span>: <%= orderResult.fname + " " + orderResult.lname%></span>
+                                    </li>
+                                    <li>
+                                        <p>Phone no.</p><span>: <%= orderResult.number %></span>
+                                    </li>
+                                    <li>
+                                        <p>Email</p><span>: <%= orderResult.email %></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-lx-4">
+                            <div class="single_confirmation_details">
+                                <h4>Shipping Address</h4>
+                                <ul>
+                                    <li>
+                                        <p>Address</p><span>: <%=orderResult.address%></span>
+                                    </li>
+                                    <li>
+                                        <p>city</p><span>: <%=orderResult.town%></span>
+                                    </li>
+                                    <li>
+                                        <p>postcode</p><span>: <%= orderResult.zipcode%></span>
+                                    </li>
+                                    <%if(orderResult.otherInfo != ""){%>
+                                        <li>
+                                            <p>Additional Information</p><span>: <%= orderResult.otherInfo %> </span>
+                                        </li>
+                                        <%}%>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="order_details_iner">
+                                <h3>Order Details</h3>
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" colspan="2">Product</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(p of products) {%>
+                                            <tr>
+                                                <th colspan="2"><span><a href="/products/<%= p.productId._id %>" style="text-decoration: none;"><%=p.productId.title%></a></span></th>
+                                                <th>
+                                                    <%= p.quantity%>
+                                                </th>
+                                                <th> <span>LE. <%= (p.quantity * p.productId.price)%></span></th>
+                                            </tr>
+                                            <%}%>
+                                                <tr>
+                                                    <th colspan="3">Subtotal</th>
+                                                    <th> <span>LE. <%= totalPrice - shipping %></span></th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="3">shipping</th>
+                                                    <th><span>LE. <%= shipping %></span></th>
+                                                </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col" colspan="3"></th>
+                                            <th scope="col">Total price:
+                                                <%= totalPrice%> LE.
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================ confirmation part end =================-->
+            <%- include('../includes/end.ejs') %>
