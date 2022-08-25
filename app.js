@@ -11,7 +11,8 @@ const flash = require('connect-flash');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI ='mongodb+srv://Zodiak-silver-main:Zodiak-silver-main1234@cluster0.jbqvwty.mongodb.net/Zodiak-silver-main';
+const MONGODB_URI ='mongodb+srv://DevSolutions:8ttM5kVi6BqOe2ol@cluster0.8t7rw.mongodb.net/zodiak-silver-test'
+//       'mongodb+srv://Zodiak-silver-main:Zodiak-silver-main1234@cluster0.jbqvwty.mongodb.net/Zodiak-silver-main';
 //     'mongodb+srv://DevSolutions:8ttM5kVi6BqOe2ol@cluster0.8t7rw.mongodb.net/zodiak-silver-test';
 
 const app = express();
